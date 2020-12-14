@@ -1,0 +1,20 @@
+<% post.each do |post| %>
+	<%= link_to post_path(post) do %>
+		<div class="col-xs-12 side-flex">
+			<div class ="col-xs-6">
+				 <%= attachment_image_tag(post, :image, fallback: "no-image-user.png", class: "side-post-image") %>
+			</div>
+
+			<div class="col-xs-3 side-user">
+				<%= link_to user_path(post.user) do %>
+					<%= attachment_image_tag post.user, :profile_image, fallback: "no-image-user.png", style: "width: 50px; height: 50px;",class:"profile-image" %>
+				<% end %>
+			</div>
+
+			<div class="col-xs-3 side-name">
+				@<%= post.user.name %>
+			</div>
+		</div>
+	<% end %>
+<% end %>
+

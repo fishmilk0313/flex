@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_081821) do
+ActiveRecord::Schema.define(version: 2020_11_11_105230) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -40,13 +40,6 @@ ActiveRecord::Schema.define(version: 2020_11_04_081821) do
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
-  create_table "post_hashtags", force: :cascade do |t|
-    t.integer "post_id_id"
-    t.integer "hashtag_id_id"
-    t.index ["hashtag_id_id"], name: "index_post_hashtags_on_hashtag_id_id"
-    t.index ["post_id_id"], name: "index_post_hashtags_on_post_id_id"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "hashtag_id"
@@ -64,6 +57,13 @@ ActiveRecord::Schema.define(version: 2020_11_04_081821) do
     t.index ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
     t.index ["following_id"], name: "index_relationships_on_following_id"
+  end
+
+  create_table "tags", id: false, force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "hashtag_id"
+    t.index ["hashtag_id"], name: "index_tags_on_hashtag_id"
+    t.index ["post_id"], name: "index_tags_on_post_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,0 +1,43 @@
+<div class ="container">
+	<div class="row">
+		<%= render "devise/shared/error_messages", resource: @post %>
+
+
+		<%= form_for(@post, url: posts_path, method: :post)do |f| %>
+
+			<div class="col-xs-12 col-lg-offset-2 col-lg-8">
+				<div class ="col-xs-12 post-new">
+					<%= attachment_image_tag current_user, :profile_image, fallback: "no-image-user.png",  style: "width: 50px; height: 50px;" %><br>
+
+					<%= f.text_area :text, class: "form_control " ,placeholder: "FLEXしよう..." %>
+				</div>
+				<div class="col-xs-12">
+					<%= attachment_image_tag(@post, :image, fallback: "no-image.png", class:"new-image") %>
+			 			<%= f.attachment_field :image %>
+			 	</div>
+			 	<div class="col-xs-12">
+			 		<%= f.submit "FLEX", class: "btn-block btn-primary" %>
+			 	</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+
+<script>
+$(function(){
+    // inputのidから情報の取得
+    $('#post_image').on('change', function (e) {
+// ここから既存の画像のurlの取得
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $(".image").attr('src', e.target.result);
+    }
+// ここまで
+    reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
+});
+});
+
+</script>
+
+

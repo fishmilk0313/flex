@@ -1,0 +1,16 @@
+<div class="container-fuild">
+	<div class="row">
+		<div class="col-xs-3 top-sidebar">
+			<h4>LIKE Ranking</h4>
+			<%= render  '/layouts/sidebar', {post: @post_side} %>
+		</div>
+
+		<div class="col-xs-8 post-index">
+			<% @post.each do |post| %>
+				<%= render '/posts/post', {post: post} %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+

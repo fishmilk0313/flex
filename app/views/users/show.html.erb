@@ -1,0 +1,54 @@
+<div class="container">
+	<div class="row">
+		
+		<div class="col-xs-offset-2 col-xs-8 user-show-fream">
+			<div class="col-xs-4">
+				<%= attachment_image_tag(@user, :profile_image, fallback: "no-image-user.png", class: "profile-image", style: "width: 50px; height: 50px;") %>
+				@<%= @user.name %>
+			</div>
+			<div class="col-xs-offset-4 col-xs-4">
+				<%if @user.id == current_user.id %>
+				<%= link_to edit_user_path(current_user.id) do %>
+						<button type="button" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-wrench fa-2x" aria-hidden="true"></span>
+						</button>
+				<% end %>
+				<% else %>
+
+				<%= render "users/follow_form" %>
+
+				<% end %>
+			</div>
+			<% if @user.introduction == nil %>
+			<div class="col-xs-12 user-introduction">
+				<p>一言はありません</p>
+			</div>
+			<% else %>
+			<div class="col-xs-12 user-introduction">
+				<p><%= @user.introduction %></p>
+			</div>
+			<% end %>
+
+			<div class="stats col-xs-4">
+				<%= link_to following_user_path(@user) do%>
+				    <strong id="following" class="stat">
+					     <%= @user.following.count %>フォロー
+					</strong>
+				<% end %>
+				<%= link_to followers_user_path(@user) do%>
+				    <strong id="followers" class="stat">
+					    <%= @user.followers.count %>フォロワー
+					 </strong>
+				<% end %>
+			</div>
+
+			<div class="col-xs-12">
+				<h3>投稿一覧</h3>
+			</div>
+
+		<% @user.posts.each do |post| %>
+			<%= render '/posts/post', {post: post} %>
+		<% end %>
+	</div>
+</div>
+</div>
+

@@ -1,0 +1,8 @@
+<div class ="container">
+	<div class =" row">
+		<div class ="col-xs-12">
+			<h1 class ="text-center"><%= @user.name %>のfollowing</h1>
+			<%= render 'follow_index', {user: @user.following} %>
+		</div>
+	</div>
+</div>
