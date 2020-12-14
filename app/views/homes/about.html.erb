@@ -1,0 +1,116 @@
+<div class="container-fuild">
+	<div class="row">
+		<div class="col-xs-8 about-top">
+			<div class="col-xs-3 about-image about-image1">
+			</div>
+			<div class="col-xs-5 about-image about-image2">
+			</div>
+			<div class="col-xs-4 about-image about-image3">
+			</div>
+			<div class="col-xs-4 about-image about-image4">
+			</div>
+			<div class="col-xs-3 about-image about-image5">
+			</div>
+			<div class="col-xs-5 about-image about-image6">
+			</div>
+		</div>
+		<div class="col-xs-4 text-center about-about">
+			<h1><strong>「FLEX」</strong><small>とは？</small></h1>
+			<p class="about-text">
+				一度は耳にしたことがあるであろう単語、「FLEX」その意味は大きく分けて2通り存在します。<br>
+				テレビや、仕事を探している時などに「flex制度」と言うのを耳にすることがあると思います。<br>
+				ビジネス用語では「融通の効く、柔軟な」と言った意味で使われています。<br>
+				もう一つの意味が当サイトの名前の由来であり、アメリカ南部を発祥とされているスラング用語の一つであり<br>
+				<strong>「見せびらかしす、カッコつける、自慢する」</strong><br>
+				と言う意味で使われています。
+			</p>
+		</div>
+	</div>
+</div>
+
+	<% if user_signed_in? %>
+			<div class="col-xs-6 about-bar about-index">
+				<%= link_to posts_path do %>
+				<h6>Flex一覧へ</h1>
+			</div>
+		<% end %>
+
+		<div class="col-xs-6 about-bar about-flex">
+			<%= link_to new_post_path do %>
+				<h6> Flexする</h1>
+			<% end %>
+		</div>
+	<% else %>
+		<div class="col-xs-6 about-bar about-index">
+			<%= link_to new_user_session_path do %>
+			<h1>LOGIN</h1>
+			<% end %>
+		</div>
+		<div class="col-xs-6 about-bar about-flex">
+			<%= new_user_registration_path do %>
+				<h1>SIGINUP</h1>
+			<% end %>
+		</div>
+	<% end %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 about-bottom">
+			<div class="col-xs-5 text-center about-sample">
+				<h3>なんでも自慢しよう</h3>
+				<p class="about-bottom-text">
+					誰しも自慢をしたいタイミングがあると思います。<br>
+					例えば、新しい靴を買った時、仕事で成果を出した時、<br>
+					筋トレで自分を磨いてる時、車を購入した時、<br>
+					など人によって内容は様々です。<br>
+					ストレスが溜まりやすい現代社会、せめて当サイト上だけでも<br>
+					他人に気をつかわず「flex」しませんか？
+				</p>
+			</div>
+
+			<div class="col-xs-6 ">
+				<div class="col-xs-12 side-flex">
+					<div class="col-xs-4">
+						<img src="/assets/about-sample.jpeg"  width="100%" height="150px"alt="">
+					</div>
+
+					<div class="col-xs-8 text-center">
+						<div class="col-xs-3">
+							<img src="/assets/no-image-user.png" alt=""  width="50px" height="50px">
+						</div>
+						<div class="col-xs-9">
+							<h4>Flex太郎</h4>
+						</div>
+					</div>
+
+					<div class="col-xs-8 text-center">
+						<p>ずっと書いたかったパーカーを渋谷でGet!!<br>
+							明日から仕事を頑張ろう〜！
+						</p>
+					</div>
+				</div>
+				<div class="col-xs-12 side-flex">
+					<div class="col-xs-4">
+						<img src="/assets/about-sample.jpeg"  width="100%" height="150px"alt="">
+					</div>
+
+					<div class="col-xs-8 text-center">
+						<div class="col-xs-3">
+							<img src="/assets/no-image-user.png" alt=""  width="50px" height="50px">
+						</div>
+						<div class="col-xs-9">
+							<h4>Flex太郎</h4>
+						</div>
+					</div>
+
+					<div class="col-xs-8 text-center">
+						<p>ずっと書いたかったパーカーを渋谷でGet!!<br>
+							明日から仕事を頑張ろう〜！
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

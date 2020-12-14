@@ -9,7 +9,71 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header>
+    <div class="header-flex">
+      <div class　= "header-logo">
+        <%= link_to root_path do %>
+          <h3>FLEX</h3>
+        <% end %>
+      </div>
+    <% if user_signed_in? %>
+      <div class = "header-link">
+        <nav class ="header-nav">
+          <ul>
+            <li class ="nav-item">
+              <%= link_to  "FLEX", posts_path %>
+            </li>
+            <li class ="nav-item">
+              <%= link_to "通知", notifications_path %>
+            </li>
+            <li class ="nav-item">
+              <%= link_to "マイページ", user_path(current_user) %>
+            </li>
+            <li class ="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path %>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    <% else %>
+      <div class ="header-link">
+        <nav class ="header-nav">
+          <ul>
+            <li class="nav-item">
+              <%= link_to  "FLEX", posts_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ABOUT", homes_top_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_user_session_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "サインアップ", new_user_registration_path %>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    <% end %>
+      <div class="serach">
+        <%= search_form_for @search, url: posts_path do |f| %>
+          <%= f.text_field :text_cont, placeholder: 'Flexを検索する...' %>
+        <%= f.submit ("検索する") %>
+        <% end %>
+      </div>
+    </div>
+  </header>
+
+
+
+
+
   <body>
     <%= yield %>
   </body>
+  <footer>
+    <div class ="footer-bottom">
+      <p class ="text-center">© All rights reserved by dmmwebcamp.</p>
+    </div>
+  </footer>
 </html>

@@ -1,0 +1,24 @@
+<div class="side-flex col-xs-12">
+	<div class="col-xs-4">
+		<%= link_to post_path(post) do %>
+		 	<%= attachment_image_tag(post, :image, fallback: "no-image.png", class: "post-image") %>
+		 <% end %>
+	</div>
+	<div class="col-xs-6">
+		<%= link_to user_path(post.user) do %>
+			<%= attachment_image_tag post.user, :profile_image, fallback: "no-image-user.png", style: "width: 50px; height: 50px;",class:"profile-image" %>
+		<% end %>
+		@<%= post.user.name %><br>
+		<p><%= simple_format(post.text.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "")) %></p>
+	    <!--4.tweetにタグがあればタグを出力する-->
+	    <% if post.hashtags.any? %>
+		   	<% post.hashtags.each do |hashtag| %>
+	    		<p>#<%= hashtag.hashname %></p>
+			 <% end %>
+		<% end %>
+	</div>
+
+	<div class="col-xs-2">
+		<%= render  '/posts/favorite', {post: post} %>
+	</div>
+</div>
